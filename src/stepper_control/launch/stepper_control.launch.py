@@ -99,10 +99,10 @@ def generate_launch_description():
         description='Maximum velocity in steps per second'
     )
     
-    # Create stepper control node
+    # Create stepper control node - Fixed for ROS2 Dashing compatibility
     stepper_node = Node(
         package='stepper_control',
-        executable='stepper_node',
+        node_executable='stepper_node',
         name='stepper_control_node',
         output='screen',
         parameters=[{
@@ -122,10 +122,10 @@ def generate_launch_description():
         ]
     )
     
-    # Create safety monitor node
+    # Create safety monitor node - Fixed for ROS2 Dashing compatibility
     safety_monitor_node = Node(
         package='stepper_control',
-        executable='safety_monitor',
+        node_executable='safety_monitor',
         name='safety_monitor_node',
         output='screen',
         parameters=[{
