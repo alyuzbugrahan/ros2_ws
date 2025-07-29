@@ -31,10 +31,4 @@ setup(
             'test_node = stepper_control.test_node:main',
         ],
     },
-    scripts=[
-        'scripts/stepper_node',
-        'scripts/keyboard_controller', 
-        'scripts/motor_driver',
-        'scripts/safety_monitor',
-    ],
 ) 
