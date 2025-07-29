@@ -1,0 +1,42 @@
+# Motor Parameters Configuration for Jetson Nano Stepper Control
+# Compatible with ROS2 Dashing and Ubuntu 18.04
+
+# GPIO Pin Assignments for Jetson Nano
+# Using BOARD numbering scheme
+azimuth_step_pin: 11      # GPIO17 - Azimuth motor step signal
+azimuth_dir_pin: 13       # GPIO27 - Azimuth motor direction signal
+azimuth_enable_pin: 15    # GPIO22 - Azimuth motor enable signal
+
+elevator_step_pin: 16     # GPIO23 - Elevator motor step signal
+elevator_dir_pin: 18      # GPIO24 - Elevator motor direction signal
+elevator_enable_pin: 22   # GPIO25 - Elevator motor enable signal
+
+# Motor Control Parameters
+step_delay: 0.001         # Delay between steps in seconds (1ms)
+steps_per_command: 10     # Number of steps per keyboard command
+max_steps: 1000          # Maximum steps for position tracking
+
+# Safety Parameters
+max_azimuth_position: 1000    # Maximum azimuth position in steps
+min_azimuth_position: -1000   # Minimum azimuth position in steps
+max_elevator_position: 500    # Maximum elevator position in steps
+min_elevator_position: -500   # Minimum elevator position in steps
+max_velocity: 100.0          # Maximum velocity in steps per second
+
+# Limit Switch GPIO Pins (optional)
+limit_switches:
+  azimuth_min: 29   # GPIO5 - Azimuth minimum limit switch
+  azimuth_max: 31   # GPIO6 - Azimuth maximum limit switch
+  elevator_min: 33  # GPIO13 - Elevator minimum limit switch
+  elevator_max: 35  # GPIO19 - Elevator maximum limit switch
+
+# Control Parameters
+status_publish_rate: 10.0     # Status publishing rate in Hz
+safety_check_rate: 10.0       # Safety monitoring rate in Hz
+
+# Motor Specifications (for reference)
+motor_specs:
+  steps_per_revolution: 200   # Steps per full revolution
+  microstepping: 1           # Microstepping setting
+  max_rpm: 60                # Maximum RPM
+  holding_torque: 0.4        # Holding torque in Nm 

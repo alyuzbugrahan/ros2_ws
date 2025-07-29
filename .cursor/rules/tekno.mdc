@@ -1,0 +1,248 @@
+---
+alwaysApply: true
+---
+
+Cursor Rules - Jetson Nano Stepper Motor Control Project
+Hardware Constraints
+
+Platform: Jetson Nano JNX30D
+OS: Ubuntu 18.04 (fixed, cannot upgrade)
+Motors: 2x Stepper Motors (Azimuth + Elevator)
+Driver: Single stepper motor driver for both motors
+GPIO: Use Jetson Nano GPIO pins for motor control
+
+Software Constraints
+
+ROS Version: ROS2 Dashing ONLY (due to Ubuntu 18.04)
+Python Version: Python 3.6 (Ubuntu 18.04 default)
+Architecture: ARM64 (aarch64)
+
+ROS2 Dashing Specific Rules
+
+Package Structure: Always use ament_cmake or ament_python build system
+Node Creation: Use rclpy for Python nodes, rclcpp for C++ nodes
+Message Types: Only use message types available in ROS2 Dashing
+Launch Files: Use Python-based launch files (.launch.py)
+Dependencies: Only suggest packages that exist in ROS2 Dashing repositories
+
+Code Standards
+Python Code
+
+Compatible with Python 3.6 syntax
+Use type hints where supported in Python 3.6
+Follow ROS2 Dashing naming conventions
+Use rclpy.spin() for node lifecycle management
+
+C++ Code
+
+C++14 standard (compatible with Ubuntu 18.04 default compiler)
+Use std::shared_ptr for ROS2 node management
+Include proper ROS2 Dashing headers
+
+GPIO Control
+
+Use Jetson.GPIO library (compatible with Jetson Nano)
+Implement proper GPIO cleanup in destructors
+Handle motor driver timing requirements
+Implement motor multiplexing for single driver usage
+
+Motor Control Requirements
+
+Azimuth Motor: Horizontal rotation control
+Elevator Motor: Vertical elevation control
+Driver Sharing: Implement proper switching mechanism between motors
+Safety: Include limit switches and emergency stop functionality
+Precision: Implement step counting and position feedback
+
+Package Dependencies
+Always Check Availability in ROS2 Dashing:
+
+rclpy ✓
+std_msgs ✓
+geometry_msgs ✓
+sensor_msgs ✓
+tf2_ros ✓
+tf2_geometry_msgs ✓
+
+Hardware Interface:
+
+Jetson.GPIO (install via pip)
+pyserial (if needed for driver communication)
+
+File Structure Requirements
+workspace/
+├── src/
+│   └── stepper_control/
+│       ├── package.xml (ROS2 Dashing format)
+│       ├── setup.py or CMakeLists.txt
+│       ├── stepper_control/
+│       │   ├── __init__.py
+│       │   ├── stepper_node.py
+│       │   ├── motor_driver.py
+│       │   └── safety_monitor.py
+│       ├── launch/
+│       │   └── stepper_control.launch.py
+│       └── config/
+│           └── motor_params.yaml
+Performance Constraints
+
+Memory: Limited RAM on Jetson Nano (4GB)
+CPU: ARM Cortex-A57 quad-core
+Real-time: Consider real-time requirements for motor control
+Power: Optimize for power consumption
+
+Validation Checklist
+Before suggesting any code, verify:
+
+ Compatible with Ubuntu 18.04
+ Uses ROS2 Dashing APIs only
+ Python 3.6 compatible syntax
+ Jetson Nano GPIO compatibility
+ Single driver motor multiplexing handled
+ Proper error handling and safety measures
+ Memory and performance optimized
+
+Forbidden Practices
+
+❌ Do not use ROS2 Foxy, Galactic, Humble, or newer features
+❌ Do not suggest Ubuntu upgrade
+❌ Do not use Python 3.7+ exclusive features
+❌ Do not assume multiple motor drivers
+❌ Do not use deprecated ROS1 patterns
+❌ Do not suggest x86_64 specific libraries
+
+Testing Requirements
+
+Unit tests using pytest (compatible with Python 3.6)
+Integration tests for motor control
+Hardware-in-the-loop testing procedures
+Safety system validation
+
+Documentation Standards
+
+Inline code documentation
+README with hardware setup instructions
+Motor calibration procedures
+Troubleshooting guide for common issues
+Cursor Rules - Jetson Nano Stepper Motor Control Project
+Hardware Constraints
+
+Platform: Jetson Nano JNX30D
+OS: Ubuntu 18.04 (fixed, cannot upgrade)
+Motors: 2x Stepper Motors (Azimuth + Elevator)
+Driver: Single stepper motor driver for both motors
+GPIO: Use Jetson Nano GPIO pins for motor control
+
+Software Constraints
+
+ROS Version: ROS2 Dashing ONLY (due to Ubuntu 18.04)
+Python Version: Python 3.6 (Ubuntu 18.04 default)
+Architecture: ARM64 (aarch64)
+
+ROS2 Dashing Specific Rules
+
+Package Structure: Always use ament_cmake or ament_python build system
+Node Creation: Use rclpy for Python nodes, rclcpp for C++ nodes
+Message Types: Only use message types available in ROS2 Dashing
+Launch Files: Use Python-based launch files (.launch.py)
+Dependencies: Only suggest packages that exist in ROS2 Dashing repositories
+
+Code Standards
+Python Code
+
+Compatible with Python 3.6 syntax
+Use type hints where supported in Python 3.6
+Follow ROS2 Dashing naming conventions
+Use rclpy.spin() for node lifecycle management
+
+C++ Code
+
+C++14 standard (compatible with Ubuntu 18.04 default compiler)
+Use std::shared_ptr for ROS2 node management
+Include proper ROS2 Dashing headers
+
+GPIO Control
+
+Use Jetson.GPIO library (compatible with Jetson Nano)
+Implement proper GPIO cleanup in destructors
+Handle motor driver timing requirements
+Implement motor multiplexing for single driver usage
+
+Motor Control Requirements
+
+Azimuth Motor: Horizontal rotation control
+Elevator Motor: Vertical elevation control
+Driver Sharing: Implement proper switching mechanism between motors
+Safety: Include limit switches and emergency stop functionality
+Precision: Implement step counting and position feedback
+
+Package Dependencies
+Always Check Availability in ROS2 Dashing:
+
+rclpy ✓
+std_msgs ✓
+geometry_msgs ✓
+sensor_msgs ✓
+tf2_ros ✓
+tf2_geometry_msgs ✓
+
+Hardware Interface:
+
+Jetson.GPIO (install via pip)
+pyserial (if needed for driver communication)
+
+File Structure Requirements
+workspace/
+├── src/
+│   └── stepper_control/
+│       ├── package.xml (ROS2 Dashing format)
+│       ├── setup.py or CMakeLists.txt
+│       ├── stepper_control/
+│       │   ├── __init__.py
+│       │   ├── stepper_node.py
+│       │   ├── motor_driver.py
+│       │   └── safety_monitor.py
+│       ├── launch/
+│       │   └── stepper_control.launch.py
+│       └── config/
+│           └── motor_params.yaml
+Performance Constraints
+
+Memory: Limited RAM on Jetson Nano (4GB)
+CPU: ARM Cortex-A57 quad-core
+Real-time: Consider real-time requirements for motor control
+Power: Optimize for power consumption
+
+Validation Checklist
+Before suggesting any code, verify:
+
+ Compatible with Ubuntu 18.04
+ Uses ROS2 Dashing APIs only
+ Python 3.6 compatible syntax
+ Jetson Nano GPIO compatibility
+ Single driver motor multiplexing handled
+ Proper error handling and safety measures
+ Memory and performance optimized
+
+Forbidden Practices
+
+❌ Do not use ROS2 Foxy, Galactic, Humble, or newer features
+❌ Do not suggest Ubuntu upgrade
+❌ Do not use Python 3.7+ exclusive features
+❌ Do not assume multiple motor drivers
+❌ Do not use deprecated ROS1 patterns
+❌ Do not suggest x86_64 specific libraries
+
+Testing Requirements
+
+Unit tests using pytest (compatible with Python 3.6)
+Integration tests for motor control
+Hardware-in-the-loop testing procedures
+Safety system validation
+
+Documentation Standards
+
+Inline code documentation
+README with hardware setup instructions
+Motor calibration procedures
+Troubleshooting guide for common issues
